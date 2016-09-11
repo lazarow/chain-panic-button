@@ -1,5 +1,6 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.activities.forms;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +23,8 @@ public abstract class AlarmLinkFormActivity extends AppCompatActivity implements
 
     protected Validator validator;
 
-    @NotEmpty
-    @Length(max = 20)
+    @NotEmpty(messageResId = R.string.error_empty)
+    @Length(max = 20, messageResId = R.string.error_invalid)
     protected EditText name;
 
     @Override

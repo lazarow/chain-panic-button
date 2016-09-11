@@ -18,10 +18,10 @@ public class AlarmEmailFormActivity extends AlarmMessageLinkFormActivity {
 
     static final int PICK_CONTACT_REQUEST = 1;
 
-    @NotEmpty
-    @Email
+    @NotEmpty(messageResId = R.string.error_empty)
+    @Email(messageResId = R.string.error_email)
     protected EditText email;
-    @NotEmpty
+    @NotEmpty(messageResId = R.string.error_empty)
     protected EditText subject;
 
     @Override

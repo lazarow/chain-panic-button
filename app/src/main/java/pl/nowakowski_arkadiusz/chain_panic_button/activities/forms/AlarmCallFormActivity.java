@@ -20,8 +20,8 @@ public class AlarmCallFormActivity extends AlarmLinkFormActivity {
 
     static final int PICK_CONTACT_REQUEST = 1;
 
-    @NotEmpty
-    @Length(max = 20)
+    @NotEmpty(messageResId = R.string.error_empty)
+    @Length(max = 20, messageResId = R.string.error_invalid)
     protected EditText phone;
 
     @Override

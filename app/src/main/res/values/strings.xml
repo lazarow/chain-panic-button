@@ -13,4 +13,7 @@
     <string name="email_hint">E-mail</string>
     <string name="subject_hint">Temat</string>
     <string name="name_hint">Nazwa</string>
+    <string name="error_empty">To pole nie może być puste</string>
+    <string name="error_invalid">To pole zawiera nieprawidłową wartość</string>
+    <string name="error_email">Nieprawidłowy adres email</string>
 </resources>

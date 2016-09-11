@@ -10,7 +10,7 @@ import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
 public abstract class AlarmMessageLinkFormActivity extends AlarmLinkFormActivity {
 
-    @NotEmpty
+    @NotEmpty(messageResId = R.string.error_empty)
     protected EditText message;
     protected CheckBox addLocation;
     protected CheckBox addPhoto;
