@@ -1,11 +1,11 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.activities;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
@@ -31,6 +31,15 @@ public class AlarmChainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                break;
+            case R.id.add_alarm_call:
+                startActivity(new Intent(this, AlarmCallFormActivity.class));
+                break;
+            case R.id.add_alarm_email:
+                startActivity(new Intent(this, AlarmEmailFormActivity.class));
+                break;
+            case R.id.add_alarm_sms:
+                startActivity(new Intent(this, AlarmSMSFormActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

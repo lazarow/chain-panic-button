@@ -15,7 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.AlarmChainActivity"></activity>
+        <activity android:name=".activities.AlarmChainActivity" />
+        <activity android:name=".activities.AlarmSMSFormActivity" />
+        <activity android:name=".activities.AlarmEmailFormActivity" />
+        <activity android:name=".activities.AlarmCallFormActivity"></activity>
     </application>
 
 </manifest>

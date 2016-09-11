@@ -26,8 +26,7 @@ public class StartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.manage_chain:
-                Intent intent = new Intent(this, AlarmChainActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(this, AlarmChainActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

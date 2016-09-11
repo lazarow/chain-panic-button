@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_action_plus"
         app:showAsAction="always" >
         <menu>
-            <item android:title="@string/alarm_sms" />
-            <item android:title="@string/alarm_email" />
-            <item android:title="@string/alarm_call" />
+            <item android:id="@+id/add_alarm_sms" android:title="@string/alarm_sms" />
+            <item android:id="@+id/add_alarm_email" android:title="@string/alarm_email" />
+            <item android:id="@+id/add_alarm_call" android:title="@string/alarm_call" />
         </menu>
     </item>
 </menu>
