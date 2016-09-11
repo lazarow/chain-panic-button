@@ -40,16 +40,7 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
 
     public void insert(ChainLink chainLink) {
         SQLiteDatabase database = getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("type", chainLink.getType().getValue());
-        contentValues.put("name", chainLink.getName());
-        contentValues.put("message", chainLink.getMessage());
-        contentValues.put("addLocation", chainLink.getAddLocation() ? 1 : 0);
-        contentValues.put("addPhoto", chainLink.getAddPhoto() ? 1 : 0);
-        contentValues.put("phone", chainLink.getPhone());
-        contentValues.put("email", chainLink.getEmail());
-        contentValues.put("subject", chainLink.getSubject());
-        database.insert("chain_link", null, contentValues);
+        database.insert("chain_link", null, chainLink.toContentValues());
     }
 
     public List<ChainLink> findAll() {
@@ -62,14 +53,15 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
                 ChainLinkType.getByType(cursor.getInt(cursor.getColumnIndex("type"))),
                 cursor.getString(cursor.getColumnIndex("name")),
                 cursor.getString(cursor.getColumnIndex("message")),
-                cursor.getInt(cursor.getColumnIndex("addLocation")) == 1 ? true : false,
-                cursor.getInt(cursor.getColumnIndex("addPhoto")) == 1 ? true : false,
+                cursor.getInt(cursor.getColumnIndex("addLocation")) == 1,
+                cursor.getInt(cursor.getColumnIndex("addPhoto")) == 1,
                 cursor.getString(cursor.getColumnIndex("phone")),
                 cursor.getString(cursor.getColumnIndex("email")),
                 cursor.getString(cursor.getColumnIndex("subject"))
             );
             chainLinks.add(chainLink);
         }
+        cursor.close();
         return chainLinks;
     }
 }

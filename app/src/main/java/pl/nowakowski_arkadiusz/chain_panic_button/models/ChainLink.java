@@ -1,5 +1,7 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.models;
 
+import android.content.ContentValues;
+
 public class ChainLink {
 
     private final Integer id;
@@ -76,6 +78,19 @@ public class ChainLink {
 
     public static ChainLink createCallChainLink(Integer id, String name, String phone) {
         return new ChainLink(id, ChainLinkType.CALL, name, "", false, false, phone, "", "");
+    }
+
+    public ContentValues toContentValues() {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("type", getType().getValue());
+        contentValues.put("name", getName());
+        contentValues.put("message", getMessage());
+        contentValues.put("addLocation", getAddLocation() ? 1 : 0);
+        contentValues.put("addPhoto", getAddPhoto() ? 1 : 0);
+        contentValues.put("phone", getPhone());
+        contentValues.put("email", getEmail());
+        contentValues.put("subject", getSubject());
+        return contentValues;
     }
 
     public static ChainLink createSMSChainLink(
