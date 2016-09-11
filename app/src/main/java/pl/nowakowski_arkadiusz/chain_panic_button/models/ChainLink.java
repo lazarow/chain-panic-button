@@ -6,8 +6,8 @@ public class ChainLink {
     private final ChainLinkType type;
     private final String name;
     private final String message;
-    private final Boolean addLocation;
-    private final Boolean addPhoto;
+    private final boolean addLocation;
+    private final boolean addPhoto;
     private final String phone;
     private final String email;
     private final String subject;
@@ -24,15 +24,15 @@ public class ChainLink {
         return name;
     }
 
-    public Boolean getAddLocation() {
-        return addLocation;
-    }
-
     public String getMessage() {
         return message;
     }
 
-    public Boolean getAddPhoto() {
+    public boolean getAddLocation() {
+        return addLocation;
+    }
+
+    public boolean getAddPhoto() {
         return addPhoto;
     }
 
@@ -53,8 +53,8 @@ public class ChainLink {
         ChainLinkType type,
         String name,
         String message,
-        Boolean addLocation,
-        Boolean addPhoto,
+        boolean addLocation,
+        boolean addPhoto,
         String phone,
         String email,
         String subject
@@ -70,28 +70,32 @@ public class ChainLink {
         this.subject = subject;
     }
 
+    public boolean isNewRecord() {
+        return id == null;
+    }
+
     public static ChainLink createCallChainLink(Integer id, String name, String phone) {
-        return new ChainLink(id, ChainLinkType.CALL, name, null, null, null, phone, null, null);
+        return new ChainLink(id, ChainLinkType.CALL, name, "", false, false, phone, "", "");
     }
 
     public static ChainLink createSMSChainLink(
         Integer id,
         String name, String message,
-        Boolean addLocation,
-        Boolean addPhoto,
+        boolean addLocation,
+        boolean addPhoto,
         String phone
     ) {
-        return new ChainLink(id, ChainLinkType.CALL, name, message, addLocation, addPhoto, phone, null, null);
+        return new ChainLink(id, ChainLinkType.CALL, name, message, addLocation, addPhoto, phone, "", "");
     }
 
     public static ChainLink createEmailChainLink(
             Integer id,
             String name, String message,
-            Boolean addLocation,
-            Boolean addPhoto,
+            boolean addLocation,
+            boolean addPhoto,
             String email,
             String subject
     ) {
-        return new ChainLink(id, ChainLinkType.CALL, name, message, addLocation, addPhoto, null, email, subject);
+        return new ChainLink(id, ChainLinkType.CALL, name, message, addLocation, addPhoto, "", email, subject);
     }
 }

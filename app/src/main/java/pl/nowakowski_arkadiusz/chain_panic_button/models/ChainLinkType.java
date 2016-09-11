@@ -12,4 +12,11 @@ public enum ChainLinkType {
     public int getValue() {
         return value;
     }
+
+    public static ChainLinkType getByType(int type) {
+        if (type == 0) return SMS;
+        else if (type == 1) return EMAIL;
+        else if (type == 2) return CALL;
+        return null;
+    }
 }
