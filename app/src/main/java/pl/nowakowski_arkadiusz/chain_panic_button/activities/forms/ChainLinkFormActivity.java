@@ -1,6 +1,5 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.activities.forms;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +30,9 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         // Setting the back button
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         // Setting the validator
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -43,7 +44,7 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Building the standard form menu
-        getMenuInflater().inflate(R.menu.menu_alarm_link, menu);
+        getMenuInflater().inflate(R.menu.menu_chain_link, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -62,7 +63,6 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
 
     @Override
     public void onValidationSucceeded() {
-        Toast.makeText(this, "Yay! we got it right!", Toast.LENGTH_SHORT).show();
     }
 
     @Override

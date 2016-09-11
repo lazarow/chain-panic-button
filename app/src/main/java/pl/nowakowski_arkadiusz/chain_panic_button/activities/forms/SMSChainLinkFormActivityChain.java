@@ -25,7 +25,9 @@ public class SMSChainLinkFormActivityChain extends ChainLinkExpandedFormActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.alarm_sms);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.alarm_sms);
+        }
         setContentView(R.layout.activity_form_sms_chain_link);
         phone = (EditText) findViewById(R.id.input_phone);
         super.onCreate(savedInstanceState);
@@ -33,7 +35,6 @@ public class SMSChainLinkFormActivityChain extends ChainLinkExpandedFormActivity
 
     /**
      * Picks a phone number from contacts
-     * @param view
      */
     public void pickPhoneNumber(View view) {
         Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
@@ -49,9 +50,11 @@ public class SMSChainLinkFormActivityChain extends ChainLinkExpandedFormActivity
                 Uri contactUri = data.getData();
                 String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
                 Cursor cursor = getContentResolver().query(contactUri, projection, null, null, null);
-                cursor.moveToFirst();
-                int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
-                phone.setText(cursor.getString(column));
+                if (cursor.moveToFirst()) {
+                    int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                    phone.setText(cursor.getString(column));
+                }
+                cursor.close();
             }
         }
     }

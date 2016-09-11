@@ -27,7 +27,9 @@ public class EmailChainLinkFormActivityChain extends ChainLinkExpandedFormActivi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.alarm_email);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.alarm_email);
+        }
         setContentView(R.layout.activity_form_email_chain_link);
         // Setting fields
         email = (EditText) findViewById(R.id.input_email);
@@ -49,9 +51,11 @@ public class EmailChainLinkFormActivityChain extends ChainLinkExpandedFormActivi
                 Uri contactUri = data.getData();
                 String[] projection = {ContactsContract.CommonDataKinds.Email.ADDRESS};
                 Cursor cursor = getContentResolver().query(contactUri, projection, null, null, null);
-                cursor.moveToFirst();
-                int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.ADDRESS);
-                email.setText(cursor.getString(column));
+                if (cursor.moveToFirst()) {
+                    int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.ADDRESS);
+                    email.setText(cursor.getString(column));
+                }
+                cursor.close();
             }
         }
     }

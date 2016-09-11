@@ -16,6 +16,7 @@ import pl.nowakowski_arkadiusz.chain_panic_button.activities.forms.CallChainLink
 import pl.nowakowski_arkadiusz.chain_panic_button.activities.forms.EmailChainLinkFormActivityChain;
 import pl.nowakowski_arkadiusz.chain_panic_button.activities.forms.SMSChainLinkFormActivityChain;
 import pl.nowakowski_arkadiusz.chain_panic_button.adapters.ChainLinksAdapter;
+import pl.nowakowski_arkadiusz.chain_panic_button.dao.ChainLinkDAO;
 import pl.nowakowski_arkadiusz.chain_panic_button.models.ChainLink;
 
 public class AlarmChainActivity extends AppCompatActivity {
@@ -24,17 +25,18 @@ public class AlarmChainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.alarm_chain);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.alarm_chain);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         setContentView(R.layout.activity_alarm_chain);
     }
 
     @Override
     protected void onResume() {
-        List<ChainLink> chainLinks = new ArrayList<>();
-        chainLinks.add(ChainLink.createCallChainLink(null, "Test 1", ""));
-        chainLinks.add(ChainLink.createCallChainLink(null, "Test 2", ""));
-        chainLinks.add(ChainLink.createCallChainLink(null, "Test 3", ""));
+        ChainLinkDAO dao = new ChainLinkDAO(this);
+        List<ChainLink> chainLinks = dao.findAll();
+        dao.close();
         ListView chain = (ListView) findViewById(R.id.chain);
         ChainLinksAdapter adapter = new ChainLinksAdapter(this, -1, chainLinks);
         chain.setAdapter(adapter);

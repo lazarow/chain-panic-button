@@ -27,7 +27,9 @@ public class CallChainLinkFormActivity extends ChainLinkFormActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(R.string.alarm_call);
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.alarm_call);
+        }
         setContentView(R.layout.activity_form_call_chain_link);
         phone = (EditText) findViewById(R.id.input_phone);
         super.onCreate(savedInstanceState);
@@ -35,7 +37,6 @@ public class CallChainLinkFormActivity extends ChainLinkFormActivity {
 
     /**
      * Picks a phone number from contacts
-     * @param view
      */
     public void pickPhoneNumber(View view) {
         Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
@@ -51,9 +52,11 @@ public class CallChainLinkFormActivity extends ChainLinkFormActivity {
                 Uri contactUri = data.getData();
                 String[] projection = {Phone.NUMBER};
                 Cursor cursor = getContentResolver().query(contactUri, projection, null, null, null);
-                cursor.moveToFirst();
-                int column = cursor.getColumnIndex(Phone.NUMBER);
-                phone.setText(cursor.getString(column));
+                if (cursor.moveToFirst()) {
+                    int column = cursor.getColumnIndex(Phone.NUMBER);
+                    phone.setText(cursor.getString(column));
+                }
+                cursor.close();
             }
         }
     }
