@@ -4,4 +4,5 @@
     <string name="alarm_sms">Alarmowy SMS</string>
     <string name="alarm_email">Alarmowy Email</string>
     <string name="alarm_call">Alarmowe połączenie</string>
+    <string name="save">Zapisz</string>
 </resources>

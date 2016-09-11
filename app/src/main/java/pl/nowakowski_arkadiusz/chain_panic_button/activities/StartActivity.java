@@ -8,6 +8,9 @@ import android.view.MenuItem;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
+/**
+ * StartActivity is the main activity, it shows the timer, which starts the sending.
+ */
 public class StartActivity extends AppCompatActivity {
 
     @Override
@@ -26,6 +29,7 @@ public class StartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.manage_chain:
+                // Start the chain list activity
                 startActivity(new Intent(this, AlarmChainActivity.class));
                 break;
         }
