@@ -37,6 +37,20 @@ public class EmailChainLinkFormActivityChain extends ChainLinkExpandedFormActivi
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void loadChainLinkData() {
+        email.setText(chainLink.getEmail());
+        subject.setText(chainLink.getSubject());
+        super.loadChainLinkData();
+    }
+
+    @Override
+    protected void storeChainLinkData() {
+        chainLink.setEmail(email.getText().toString());
+        chainLink.setSubject(subject.getText().toString());
+        super.storeChainLinkData();
+    }
+
     public void pickEmailAddress(View view) {
         Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Email.CONTENT_TYPE);

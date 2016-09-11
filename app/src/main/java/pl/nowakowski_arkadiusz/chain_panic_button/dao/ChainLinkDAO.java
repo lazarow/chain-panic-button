@@ -46,7 +46,7 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
     public List<ChainLink> findAll() {
         List<ChainLink> chainLinks = new ArrayList<>();
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM chain_link ORDER BY type ASC", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM chain_link ORDER BY `type` ASC", null);
         while (cursor.moveToNext()) {
             ChainLink chainLink = new ChainLink(
                 cursor.getInt(cursor.getColumnIndex("id")),

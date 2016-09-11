@@ -2,17 +2,20 @@ package pl.nowakowski_arkadiusz.chain_panic_button.models;
 
 import android.content.ContentValues;
 
-public class ChainLink {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ChainLink implements Serializable {
 
     private final Integer id;
     private final ChainLinkType type;
-    private final String name;
-    private final String message;
-    private final boolean addLocation;
-    private final boolean addPhoto;
-    private final String phone;
-    private final String email;
-    private final String subject;
+    private String name;
+    private String message;
+    private boolean addLocation;
+    private boolean addPhoto;
+    private String phone;
+    private String email;
+    private String subject;
 
     public Integer getId() {
         return id;
@@ -48,6 +51,34 @@ public class ChainLink {
 
     public String getSubject() {
         return subject;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setAddLocation(boolean addLocation) {
+        this.addLocation = addLocation;
+    }
+
+    public void setAddPhoto(boolean addPhoto) {
+        this.addPhoto = addPhoto;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public ChainLink(
@@ -100,7 +131,7 @@ public class ChainLink {
         boolean addPhoto,
         String phone
     ) {
-        return new ChainLink(id, ChainLinkType.CALL, name, message, addLocation, addPhoto, phone, "", "");
+        return new ChainLink(id, ChainLinkType.SMS, name, message, addLocation, addPhoto, phone, "", "");
     }
 
     public static ChainLink createEmailChainLink(
@@ -111,6 +142,6 @@ public class ChainLink {
             String email,
             String subject
     ) {
-        return new ChainLink(id, ChainLinkType.CALL, name, message, addLocation, addPhoto, "", email, subject);
+        return new ChainLink(id, ChainLinkType.EMAIL, name, message, addLocation, addPhoto, "", email, subject);
     }
 }

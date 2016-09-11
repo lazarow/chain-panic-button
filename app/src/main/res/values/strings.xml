@@ -16,4 +16,5 @@
     <string name="error_empty">To pole nie może być puste</string>
     <string name="error_invalid">To pole zawiera nieprawidłową wartość</string>
     <string name="error_email">Nieprawidłowy adres email</string>
+    <string name="chain_link_saved">Ogniwo łańcucha alarmowego zostało zapisane</string>
 </resources>

@@ -1,5 +1,6 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.activities.forms;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +18,14 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import java.util.List;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
+import pl.nowakowski_arkadiusz.chain_panic_button.dao.ChainLinkDAO;
+import pl.nowakowski_arkadiusz.chain_panic_button.models.ChainLink;
 
 public abstract class ChainLinkFormActivity extends AppCompatActivity implements Validator.ValidationListener {
 
+    protected ChainLink chainLink;
     protected Validator validator;
+    private boolean isVerified = false;
 
     @NotEmpty(messageResId = R.string.error_empty)
     @Length(max = 20, messageResId = R.string.error_invalid)
@@ -38,7 +43,21 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
         validator.setValidationListener(this);
         // Setting fields
         name = (EditText) findViewById(R.id.input_name);
+        // Load the model
+        Intent intent = getIntent();
+        chainLink = (ChainLink) intent.getSerializableExtra("chainLink");
+        if (chainLink != null) {
+            loadChainLinkData();
+        }
         super.onCreate(savedInstanceState);
+    }
+
+    protected void loadChainLinkData() {
+        name.setText(chainLink.getName());
+    }
+
+    protected void storeChainLinkData() {
+        chainLink.setName(name.getText().toString());
     }
 
     @Override
@@ -56,6 +75,20 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
                 break;
             case R.id.save_the_link:
                 validator.validate();
+                if (isVerified) {
+                    if (chainLink != null) {
+                        storeChainLinkData();
+                        ChainLinkDAO dao = new ChainLinkDAO(this);
+                        if (chainLink.isNewRecord()) {
+                            dao.insert(chainLink);
+                        } else {
+
+                        }
+                        dao.close();
+                        Toast.makeText(this, R.string.chain_link_saved, Toast.LENGTH_SHORT).show();
+                    }
+                    finish();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -63,6 +96,7 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
 
     @Override
     public void onValidationSucceeded() {
+        isVerified = true;
     }
 
     @Override
@@ -76,5 +110,6 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
         }
+        isVerified = false;
     }
 }

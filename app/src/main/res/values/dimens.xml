@@ -1,4 +1,7 @@
 <resources>
     <dimen name="activity_horizontal_margin">16sp</dimen>
     <dimen name="activity_vertical_margin">16sp</dimen>
+    <dimen name="chain_link_margin">4sp</dimen>
+    <dimen name="chain_link_name_text_size">16sp</dimen>
+    <dimen name="chain_link_subname_text_size">12sp</dimen>
 </resources>

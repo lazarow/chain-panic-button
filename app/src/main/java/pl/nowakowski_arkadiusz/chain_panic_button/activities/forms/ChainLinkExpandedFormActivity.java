@@ -22,4 +22,20 @@ public abstract class ChainLinkExpandedFormActivity extends ChainLinkFormActivit
         addPhoto = (CheckBox) findViewById(R.id.checkbox_add_photo);
         super.onCreate(savedInstanceState);
     }
+
+    @Override
+    protected void loadChainLinkData() {
+        message.setText(chainLink.getMessage());
+        addLocation.setChecked(chainLink.getAddLocation());
+        addPhoto.setChecked(chainLink.getAddPhoto());
+        super.loadChainLinkData();
+    }
+
+    @Override
+    protected void storeChainLinkData() {
+        chainLink.setMessage(message.getText().toString());
+        chainLink.setAddLocation(addLocation.isChecked());
+        chainLink.setAddPhoto(addPhoto.isChecked());
+        super.storeChainLinkData();
+    }
 }

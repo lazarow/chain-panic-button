@@ -51,18 +51,25 @@ public class AlarmChainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
             case R.id.add_alarm_call:
-                startActivity(new Intent(this, CallChainLinkFormActivity.class));
+                intent = new Intent(this, CallChainLinkFormActivity.class);
+                intent.putExtra("chainLink", ChainLink.createCallChainLink(null, "", ""));
+                startActivity(intent);
                 break;
             case R.id.add_alarm_email:
-                startActivity(new Intent(this, EmailChainLinkFormActivityChain.class));
+                intent = new Intent(this, EmailChainLinkFormActivityChain.class);
+                intent.putExtra("chainLink", ChainLink.createEmailChainLink(null, "", "", false, false, "", ""));
+                startActivity(intent);
                 break;
             case R.id.add_alarm_sms:
-                startActivity(new Intent(this, SMSChainLinkFormActivityChain.class));
+                intent = new Intent(this, SMSChainLinkFormActivityChain.class);
+                intent.putExtra("chainLink", ChainLink.createSMSChainLink(null, "", "", false, false, ""));
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

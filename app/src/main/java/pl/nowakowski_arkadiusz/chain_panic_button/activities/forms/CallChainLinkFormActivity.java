@@ -35,6 +35,18 @@ public class CallChainLinkFormActivity extends ChainLinkFormActivity {
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void loadChainLinkData() {
+        phone.setText(chainLink.getPhone());
+        super.loadChainLinkData();
+    }
+
+    @Override
+    protected void storeChainLinkData() {
+        chainLink.setPhone(phone.getText().toString());
+        super.storeChainLinkData();
+    }
+
     /**
      * Picks a phone number from contacts
      */
