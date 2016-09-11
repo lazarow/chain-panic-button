@@ -10,13 +10,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
-import pl.nowakowski_arkadiusz.chain_panic_button.models.links.Link;
+import pl.nowakowski_arkadiusz.chain_panic_button.models.ChainLink;
 
-public class LinksArrayAdapter extends ArrayAdapter<Link> {
+public class ChainLinksAdapter extends ArrayAdapter<ChainLink> {
     private final Context context;
-    private final List<Link> objects;
+    private final List<ChainLink> objects;
 
-    public LinksArrayAdapter(Context context, int resource, List<Link> objects) {
+    public ChainLinksAdapter(Context context, int resource, List<ChainLink> objects) {
         super(context, -1, objects);
         this.context = context;
         this.objects = objects;

@@ -11,14 +11,13 @@
         <activity android:name=".activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.AlarmChainActivity" />
-        <activity android:name=".activities.forms.AlarmSMSFormActivity" />
-        <activity android:name=".activities.forms.AlarmEmailFormActivity" />
-        <activity android:name=".activities.forms.AlarmCallFormActivity"></activity>
+        <activity android:name=".activities.forms.SMSChainLinkFormActivityChain" />
+        <activity android:name=".activities.forms.EmailChainLinkFormActivityChain" />
+        <activity android:name=".activities.forms.CallChainLinkFormActivity"></activity>
     </application>
 
 </manifest>

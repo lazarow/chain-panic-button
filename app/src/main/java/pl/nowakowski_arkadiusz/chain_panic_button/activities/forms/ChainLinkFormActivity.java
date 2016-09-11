@@ -19,7 +19,7 @@ import java.util.List;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
-public abstract class AlarmLinkFormActivity extends AppCompatActivity implements Validator.ValidationListener {
+public abstract class ChainLinkFormActivity extends AppCompatActivity implements Validator.ValidationListener {
 
     protected Validator validator;
 
@@ -29,19 +29,15 @@ public abstract class AlarmLinkFormActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         // Setting the back button
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         // Setting the validator
         validator = new Validator(this);
         validator.setValidationListener(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+        // Setting fields
         name = (EditText) findViewById(R.id.input_name);
+        super.onCreate(savedInstanceState);
     }
 
     @Override

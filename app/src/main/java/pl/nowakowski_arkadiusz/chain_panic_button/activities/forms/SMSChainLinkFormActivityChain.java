@@ -14,7 +14,7 @@ import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
-public class AlarmSMSFormActivity extends AlarmMessageLinkFormActivity {
+public class SMSChainLinkFormActivityChain extends ChainLinkExpandedFormActivity {
 
     static final int PICK_CONTACT_REQUEST = 1;
 
@@ -24,17 +24,13 @@ public class AlarmSMSFormActivity extends AlarmMessageLinkFormActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.alarm_sms);
-        setContentView(R.layout.activity_form_alarm_sms);
+        setContentView(R.layout.activity_form_sms_chain_link);
+        phone = (EditText) findViewById(R.id.input_phone);
+        super.onCreate(savedInstanceState);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        phone = (EditText) findViewById(R.id.input_phone);
-    }
     /**
      * Picks a phone number from contacts
      * @param view

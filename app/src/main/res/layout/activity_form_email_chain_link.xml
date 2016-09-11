@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_phone_book"
                 android:padding="3dp"
-                android:onClick="pickEmail"
+                android:onClick="pickEmailAddress"
                 />
         </LinearLayout>
 
