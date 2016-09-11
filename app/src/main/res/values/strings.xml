@@ -22,5 +22,5 @@
     <string name="edit">Edytuj</string>
     <string name="chain_link_removed">Ogniwo łańcucha zostało usunięte</string>
     <string name="no_chain_links">Brak zdefiniowanych ogniw łańcucha alarmowego</string>
-    <string name="start_timer">Alarm uruchomi się za:</string>
+    <string name="start_location">Ustalam lokalizację...</string>
 </resources>
