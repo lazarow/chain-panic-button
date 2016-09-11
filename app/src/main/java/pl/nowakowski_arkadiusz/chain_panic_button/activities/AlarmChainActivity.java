@@ -6,8 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
+import pl.nowakowski_arkadiusz.chain_panic_button.adapters.LinksArrayAdapter;
+import pl.nowakowski_arkadiusz.chain_panic_button.models.links.AlarmCall;
+import pl.nowakowski_arkadiusz.chain_panic_button.models.links.Link;
 
 public class AlarmChainActivity extends AppCompatActivity {
 
@@ -18,6 +25,14 @@ public class AlarmChainActivity extends AppCompatActivity {
         actionBar.setTitle(R.string.alarm_chain);
         actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_alarm_chain);
+
+        List<Link> links = new ArrayList<>();
+        links.add(new AlarmCall("Test 1"));
+        links.add(new AlarmCall("Test 2"));
+        links.add(new AlarmCall("Test 3"));
+        ListView chain = (ListView) findViewById(R.id.chain);
+        LinksArrayAdapter adapter = new LinksArrayAdapter(this, -1, links);
+        chain.setAdapter(adapter);
     }
 
     @Override
