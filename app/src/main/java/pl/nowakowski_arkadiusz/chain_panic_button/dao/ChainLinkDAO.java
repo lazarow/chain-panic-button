@@ -21,7 +21,7 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createChainLinkTable = "CREATE TABLE chain_link (" +
-            "id INT PRIMARY_KEY," +
+            "id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "type INT NOT NULL," +
             "name TEXT NOT NULL," +
             "message TEXT NULL," +
@@ -41,6 +41,16 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
     public void insert(ChainLink chainLink) {
         SQLiteDatabase database = getWritableDatabase();
         database.insert("chain_link", null, chainLink.toContentValues());
+    }
+
+    public void update(ChainLink chainLink) {
+        SQLiteDatabase database = getWritableDatabase();
+        database.update("chain_link", chainLink.toContentValues(), "id = " + chainLink.getId(), null);
+    }
+
+    public void delete(ChainLink chainLink) {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete("chain_link", "id = " + chainLink.getId(), null);
     }
 
     public List<ChainLink> findAll() {
@@ -69,7 +79,6 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM chain_link WHERE type = " +
                 ChainLinkType.CALL.getValue() + " LIMIT 1", null);
-        System.out.println(cursor.getCount());
         boolean existing = cursor.getCount() > 0;
         cursor.close();
         return existing;

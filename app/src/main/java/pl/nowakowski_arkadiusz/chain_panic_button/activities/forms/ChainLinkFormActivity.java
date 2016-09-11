@@ -77,12 +77,12 @@ public abstract class ChainLinkFormActivity extends AppCompatActivity implements
                 validator.validate();
                 if (isVerified) {
                     if (chainLink != null) {
-                        storeChainLinkData();
                         ChainLinkDAO dao = new ChainLinkDAO(this);
+                        storeChainLinkData();
                         if (chainLink.isNewRecord()) {
                             dao.insert(chainLink);
                         } else {
-
+                            dao.update(chainLink);
                         }
                         dao.close();
                         Toast.makeText(this, R.string.chain_link_saved, Toast.LENGTH_SHORT).show();
