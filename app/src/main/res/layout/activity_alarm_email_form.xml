@@ -37,6 +37,16 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/alarm_email_form_subject"
+            android:inputType="textEmailSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/subject_hint"
+            android:backgroundTint="@color/colorPrimary"
+            android:textCursorDrawable="@null"
+            />
+
+        <EditText
             android:id="@+id/alarm_email_form_message"
             android:inputType="textMultiLine"
             android:layout_width="match_parent"

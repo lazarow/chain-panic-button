@@ -11,4 +11,5 @@
     <string name="add_location_checkbox">Dodaj lokalizację</string>
     <string name="add_photo_checkbox">Dodaj zdjęcie</string>
     <string name="email_hint">E-mail</string>
+    <string name="subject_hint">Temat</string>
 </resources>
