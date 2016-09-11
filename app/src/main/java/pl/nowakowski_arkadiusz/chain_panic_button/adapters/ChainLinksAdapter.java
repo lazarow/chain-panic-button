@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -30,13 +31,17 @@ public class ChainLinksAdapter extends ArrayAdapter<ChainLink> {
         View row = inflater.inflate(R.layout.chain_link_row, parent, false);
         TextView nameView = (TextView) row.findViewById(R.id.chain_link_row_name);
         TextView subNameView = (TextView) row.findViewById(R.id.chain_link_row_subname);
+        ImageView icon = (ImageView) row.findViewById(R.id.chain_link_row_image);
         nameView.setText(objects.get(position).getName());
         if (objects.get(position).getType().equals(ChainLinkType.SMS)) {
             subNameView.setText(objects.get(position).getPhone());
+            icon.setImageResource(R.drawable.ic_sms);
         } else if (objects.get(position).getType().equals(ChainLinkType.EMAIL)) {
             subNameView.setText(objects.get(position).getEmail());
+            icon.setImageResource(R.drawable.ic_web);
         } else if (objects.get(position).getType().equals(ChainLinkType.CALL)) {
             subNameView.setText(objects.get(position).getPhone());
+            icon.setImageResource(R.drawable.ic_call);
         }
         return row;
     }

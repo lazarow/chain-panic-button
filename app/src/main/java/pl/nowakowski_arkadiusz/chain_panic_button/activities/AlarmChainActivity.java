@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
@@ -20,6 +19,8 @@ import pl.nowakowski_arkadiusz.chain_panic_button.dao.ChainLinkDAO;
 import pl.nowakowski_arkadiusz.chain_panic_button.models.ChainLink;
 
 public class AlarmChainActivity extends AppCompatActivity {
+
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,28 @@ public class AlarmChainActivity extends AppCompatActivity {
         ListView chain = (ListView) findViewById(R.id.chain);
         ChainLinksAdapter adapter = new ChainLinksAdapter(this, -1, chainLinks);
         chain.setAdapter(adapter);
+        updateOptionsMenu();
         super.onResume();
+    }
+
+    private void updateOptionsMenu() {
+        ChainLinkDAO dao = new ChainLinkDAO(this);
+        boolean callLinkExisting = dao.hasCallChainLink();
+        dao.close();
+        if (menu != null) {
+            if (callLinkExisting) {
+                menu.getItem(0).getSubMenu().getItem(2).setEnabled(false);
+            } else {
+                menu.getItem(0).getSubMenu().getItem(2).setEnabled(true);
+            }
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_alarm_chain, menu);
+        this.menu = menu;
+        updateOptionsMenu();
         return super.onCreateOptionsMenu(menu);
     }
 

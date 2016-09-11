@@ -17,4 +17,5 @@
     <string name="error_invalid">To pole zawiera nieprawidłową wartość</string>
     <string name="error_email">Nieprawidłowy adres email</string>
     <string name="chain_link_saved">Ogniwo łańcucha alarmowego zostało zapisane</string>
+    <string name="chain_link_call_existing">Nie można dodać więcej ogniw oznaczających połączenie</string>
 </resources>

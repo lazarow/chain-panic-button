@@ -64,4 +64,14 @@ public class ChainLinkDAO extends SQLiteOpenHelper {
         cursor.close();
         return chainLinks;
     }
+
+    public boolean hasCallChainLink() {
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM chain_link WHERE type = " +
+                ChainLinkType.CALL.getValue() + " LIMIT 1", null);
+        System.out.println(cursor.getCount());
+        boolean existing = cursor.getCount() > 0;
+        cursor.close();
+        return existing;
+    }
 }
