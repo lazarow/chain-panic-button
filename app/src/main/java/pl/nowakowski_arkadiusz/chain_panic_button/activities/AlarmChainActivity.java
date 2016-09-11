@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
+import pl.nowakowski_arkadiusz.chain_panic_button.activities.forms.AlarmCallFormActivity;
+import pl.nowakowski_arkadiusz.chain_panic_button.activities.forms.AlarmEmailFormActivity;
+import pl.nowakowski_arkadiusz.chain_panic_button.activities.forms.AlarmSMSFormActivity;
 import pl.nowakowski_arkadiusz.chain_panic_button.adapters.LinksArrayAdapter;
 import pl.nowakowski_arkadiusz.chain_panic_button.models.links.AlarmCall;
 import pl.nowakowski_arkadiusz.chain_panic_button.models.links.Link;

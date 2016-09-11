@@ -13,12 +13,22 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
 
+        <EditText
+            android:id="@+id/input_name"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"
+            android:backgroundTint="@color/colorPrimary"
+            android:textCursorDrawable="@null"
+            />
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <EditText
-                android:id="@+id/alarm_email_form_email"
+                android:id="@+id/input_email"
                 android:inputType="textEmailAddress"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +47,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/alarm_email_form_subject"
+            android:id="@+id/input_subject"
             android:inputType="textEmailSubject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +57,7 @@
             />
 
         <EditText
-            android:id="@+id/alarm_email_form_message"
+            android:id="@+id/input_message"
             android:inputType="textMultiLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +70,7 @@
             />
 
         <CheckBox
-            android:id="@+id/alarm_email_form_add_location"
+            android:id="@+id/checkbox_add_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_location_checkbox"
@@ -68,7 +78,7 @@
             />
 
         <CheckBox
-            android:id="@+id/alarm_email_form_add_photo"
+            android:id="@+id/checkbox_add_photo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_photo_checkbox"

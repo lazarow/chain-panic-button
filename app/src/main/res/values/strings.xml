@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Aplikacja alarmowa</string>
-    <string name="alarm_chain">Łańcuch alarmowy</string>
+    <string name="app_name">Alarm Łańcuchowy</string>
+    <string name="alarm_chain">Łańcuch alarmów</string>
     <string name="alarm_sms">Alarmowy SMS</string>
     <string name="alarm_email">Alarmowy Email</string>
     <string name="alarm_call">Alarmowe połączenie</string>
@@ -12,4 +12,5 @@
     <string name="add_photo_checkbox">Dodaj zdjęcie</string>
     <string name="email_hint">E-mail</string>
     <string name="subject_hint">Temat</string>
+    <string name="name_hint">Nazwa</string>
 </resources>

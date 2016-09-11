@@ -16,9 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.AlarmChainActivity" />
-        <activity android:name=".activities.AlarmSMSFormActivity" />
-        <activity android:name=".activities.AlarmEmailFormActivity" />
-        <activity android:name=".activities.AlarmCallFormActivity"></activity>
+        <activity android:name=".activities.forms.AlarmSMSFormActivity" />
+        <activity android:name=".activities.forms.AlarmEmailFormActivity" />
+        <activity android:name=".activities.forms.AlarmCallFormActivity"></activity>
     </application>
 
 </manifest>
