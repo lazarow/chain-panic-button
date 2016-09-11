@@ -1,14 +1,15 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.activities;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.SystemClock;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
