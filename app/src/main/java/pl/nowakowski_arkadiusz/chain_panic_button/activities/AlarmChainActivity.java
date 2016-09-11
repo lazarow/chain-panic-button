@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
-public class ChainActivity extends AppCompatActivity {
+public class AlarmChainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chain);
+        setContentView(R.layout.activity_alarm_chain);
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Aplikacja alarmowa</string>
+    <string name="alarm_chain">Łańcuch alarmowy</string>
 </resources>
