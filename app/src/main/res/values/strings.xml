@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Aplikacja alarmowa</string>
     <string name="alarm_chain">Łańcuch alarmowy</string>
+    <string name="alarm_sms">Alarmowy SMS</string>
+    <string name="alarm_email">Alarmowy Email</string>
+    <string name="alarm_call">Alarmowe połączenie</string>
 </resources>
