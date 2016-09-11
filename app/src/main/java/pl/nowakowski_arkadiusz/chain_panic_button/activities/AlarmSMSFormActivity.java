@@ -2,10 +2,11 @@ package pl.nowakowski_arkadiusz.chain_panic_button.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.widget.EditText;
 
 import pl.nowakowski_arkadiusz.chain_panic_button.R;
 
-public class AlarmSMSFormActivity extends AlarmLinkFormActivity {
+public class AlarmSMSFormActivity extends AlarmCallFormActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +14,6 @@ public class AlarmSMSFormActivity extends AlarmLinkFormActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.alarm_sms);
         setContentView(R.layout.activity_alarm_smsform);
+        phoneNumber = (EditText) findViewById(R.id.alarm_sms_form_phone);
     }
 }

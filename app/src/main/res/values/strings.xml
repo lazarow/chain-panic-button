@@ -5,4 +5,10 @@
     <string name="alarm_email">Alarmowy Email</string>
     <string name="alarm_call">Alarmowe połączenie</string>
     <string name="save">Zapisz</string>
+    <string name="get">Pobierz</string>
+    <string name="phone_hint">Numer telefonu</string>
+    <string name="message_hint">Wiadomość</string>
+    <string name="add_location_checkbox">Dodaj lokalizację</string>
+    <string name="add_photo_checkbox">Dodaj zdjęcie</string>
+    <string name="email_hint">E-mail</string>
 </resources>
