@@ -26,7 +26,8 @@ import pl.nowakowski_arkadiusz.chain_panic_button.dao.ChainLinkDAO;
 import pl.nowakowski_arkadiusz.chain_panic_button.models.ChainLink;
 
 /**
- * StartActivity is the main activity, it shows the timer, which starts the sending.
+ * StartActivity jest pierwszym widokiem.
+ * Zajmuje się sprawdzaniem uprawnień oiraz obsługą wysyłki łańcucha alarmów.
  */
 public class StartActivity extends AppCompatActivity implements LocationListener {
 
@@ -52,6 +53,7 @@ public class StartActivity extends AppCompatActivity implements LocationListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         locationTextView = (TextView) findViewById(R.id.start_location);
+        // Sprawdzenie uprawnień i ew. poproszenie o nie
         if (
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED
@@ -67,8 +69,8 @@ public class StartActivity extends AppCompatActivity implements LocationListener
                 Manifest.permission.CALL_PHONE
             }, MY_PERMISSIONS_REQUEST);
         } else {
+            // Kiedy mamy upranienia uruchamiam usługę lokalizacji
             setLocationManager(false);
-
         }
     }
 
@@ -80,6 +82,7 @@ public class StartActivity extends AppCompatActivity implements LocationListener
         ) {
             return  ;
         }
+        // Standardowa konfiguracja pobierania lokalizacji
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         provider = locationManager.getBestProvider(criteria, false);
@@ -92,6 +95,9 @@ public class StartActivity extends AppCompatActivity implements LocationListener
         }
     }
 
+    /**
+     * Obsługa nadania lub odmowy uprawnień
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -108,6 +114,7 @@ public class StartActivity extends AppCompatActivity implements LocationListener
     protected void onResume() {
         super.onResume();
         ChainLinkDAO dao = new ChainLinkDAO(this);
+        // Pobranie ogniw łańcucha alarmowego
         chainLinks = dao.findAll();
         dao.close();
         if (locationManager != null) {
@@ -175,6 +182,9 @@ public class StartActivity extends AppCompatActivity implements LocationListener
     public void onProviderDisabled(String provider) {
     }
 
+    /**
+     * Uruchomienie łańcucha alarmowego
+     */
     public void runChainLinks(View view) {
         if (chainLinks.size() == 0) {
             Toast.makeText(this, R.string.no_chain_links, Toast.LENGTH_SHORT).show();
