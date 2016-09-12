@@ -1,6 +1,12 @@
 package pl.nowakowski_arkadiusz.chain_panic_button.models;
 
+import android.Manifest;
 import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
+import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -86,15 +92,15 @@ public class ChainLink implements Serializable {
     }
 
     public ChainLink(
-        Integer id,
-        ChainLinkType type,
-        String name,
-        String message,
-        boolean addLocation,
-        boolean addPhoto,
-        String phone,
-        String email,
-        String subject
+            Integer id,
+            ChainLinkType type,
+            String name,
+            String message,
+            boolean addLocation,
+            boolean addPhoto,
+            String phone,
+            String email,
+            String subject
     ) {
         this.id = id;
         this.type = type;
@@ -128,20 +134,24 @@ public class ChainLink implements Serializable {
         return contentValues;
     }
 
-    public void run(StartActivity activity) {
+    public void run(StartActivity activity) throws Exception {
         if (getType().equals(ChainLinkType.SMS)) {
             SMSService smsService = new SMSService(activity);
             String smsMessage = "";
             if (getAddLocation()) {
                 smsMessage = smsMessage + activity.getResources().getString(R.string.location) + ": "
-                    + (Math.round(activity.getLatitude() * 100.0) / 100.0) + ", " + (Math.round(activity.getLongitude() * 100.0) / 100.0) + ".";
+                        + (Math.round(activity.getLatitude() * 100.0) / 100.0) + ", " + (Math.round(activity.getLongitude() * 100.0) / 100.0) + ".";
             }
             smsMessage += message;
             smsService.send(phone, message);
         } else if (getType().equals(ChainLinkType.EMAIL)) {
-
         } else if (getType().equals(ChainLinkType.CALL)) {
-
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+            if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            Toast.makeText(activity, activity.getResources().getText(R.string.start_call) + " (" + phone + ")", Toast.LENGTH_SHORT).show();
+            activity.startActivity(intent);
         }
     }
 

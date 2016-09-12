@@ -26,4 +26,5 @@
     <string name="location">Lokalizacja</string>
     <string name="location_founded">Zaktualizowałem lokalizację</string>
     <string name="sms_sent">Wiadomość została wysłana</string>
+    <string name="start_call">Rozpoczynam połączenie</string>
 </resources>

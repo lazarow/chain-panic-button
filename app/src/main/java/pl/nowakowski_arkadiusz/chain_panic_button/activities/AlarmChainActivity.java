@@ -60,9 +60,9 @@ public class AlarmChainActivity extends AppCompatActivity {
         dao.close();
         if (menu != null) {
             if (callLinkExisting) {
-                menu.getItem(0).getSubMenu().getItem(2).setEnabled(false);
+                menu.getItem(0).getSubMenu().getItem(1).setEnabled(false);
             } else {
-                menu.getItem(0).getSubMenu().getItem(2).setEnabled(true);
+                menu.getItem(0).getSubMenu().getItem(1).setEnabled(true);
             }
         }
     }
@@ -121,10 +121,6 @@ public class AlarmChainActivity extends AppCompatActivity {
             case R.id.add_alarm_call:
                 intent = new Intent(this, CallChainLinkFormActivity.class);
                 intent.putExtra("chainLink", ChainLink.createCallChainLink(null, "", ""));
-                break;
-            case R.id.add_alarm_email:
-                intent = new Intent(this, EmailChainLinkFormActivityChain.class);
-                intent.putExtra("chainLink", ChainLink.createEmailChainLink(null, "", "", false, false, "", ""));
                 break;
             case R.id.add_alarm_sms:
                 intent = new Intent(this, SMSChainLinkFormActivityChain.class);

@@ -57,12 +57,14 @@ public class StartActivity extends AppCompatActivity implements LocationListener
             || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET ) != PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS ) != PackageManager.PERMISSION_GRANTED
+            || ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(this, new String[] {
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.INTERNET,
-                Manifest.permission.SEND_SMS
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.CALL_PHONE
             }, MY_PERMISSIONS_REQUEST);
         } else {
             setLocationManager(false);
@@ -178,7 +180,10 @@ public class StartActivity extends AppCompatActivity implements LocationListener
             Toast.makeText(this, R.string.no_chain_links, Toast.LENGTH_SHORT).show();
         } else {
             for (ChainLink chainLink : chainLinks) {
-                chainLink.run(this);
+                try {
+                    chainLink.run(this);
+                } catch (Exception e) {
+                }
             }
         }
     }
