@@ -4,6 +4,10 @@ import android.content.ContentValues;
 
 import java.io.Serializable;
 
+import pl.nowakowski_arkadiusz.chain_panic_button.R;
+import pl.nowakowski_arkadiusz.chain_panic_button.activities.StartActivity;
+import pl.nowakowski_arkadiusz.chain_panic_button.services.SMSService;
+
 @SuppressWarnings("serial")
 public class ChainLink implements Serializable {
 
@@ -122,6 +126,23 @@ public class ChainLink implements Serializable {
         contentValues.put("email", getEmail());
         contentValues.put("subject", getSubject());
         return contentValues;
+    }
+
+    public void run(StartActivity activity) {
+        if (getType().equals(ChainLinkType.SMS)) {
+            SMSService smsService = new SMSService(activity);
+            String smsMessage = "";
+            if (getAddLocation()) {
+                smsMessage = smsMessage + activity.getResources().getString(R.string.location) + ": "
+                    + (Math.round(activity.getLatitude() * 100.0) / 100.0) + ", " + (Math.round(activity.getLongitude() * 100.0) / 100.0) + ".";
+            }
+            smsMessage += message;
+            smsService.send(phone, message);
+        } else if (getType().equals(ChainLinkType.EMAIL)) {
+
+        } else if (getType().equals(ChainLinkType.CALL)) {
+
+        }
     }
 
     public static ChainLink createSMSChainLink(

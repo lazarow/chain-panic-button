@@ -21,6 +21,7 @@
             android:adjustViewBounds="true"
             android:padding="20dp"
             android:scaleType="fitCenter"
+            android:onClick="runChainLinks"
             />
     </LinearLayout>
 

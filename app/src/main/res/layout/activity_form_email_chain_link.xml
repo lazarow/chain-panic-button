@@ -77,13 +77,5 @@
             android:buttonTint="@color/colorPrimary"
             />
 
-        <CheckBox
-            android:id="@+id/checkbox_add_photo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_photo_checkbox"
-            android:buttonTint="@color/colorPrimary"
-            />
-
     </LinearLayout>
 </ScrollView>

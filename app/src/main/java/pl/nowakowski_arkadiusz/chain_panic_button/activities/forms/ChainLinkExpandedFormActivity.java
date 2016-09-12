@@ -13,13 +13,11 @@ public abstract class ChainLinkExpandedFormActivity extends ChainLinkFormActivit
     @NotEmpty(messageResId = R.string.error_empty)
     protected EditText message;
     protected CheckBox addLocation;
-    protected CheckBox addPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         message = (EditText) findViewById(R.id.input_message);
         addLocation = (CheckBox) findViewById(R.id.checkbox_add_location);
-        addPhoto = (CheckBox) findViewById(R.id.checkbox_add_photo);
         super.onCreate(savedInstanceState);
     }
 
@@ -27,7 +25,6 @@ public abstract class ChainLinkExpandedFormActivity extends ChainLinkFormActivit
     protected void loadChainLinkData() {
         message.setText(chainLink.getMessage());
         addLocation.setChecked(chainLink.getAddLocation());
-        addPhoto.setChecked(chainLink.getAddPhoto());
         super.loadChainLinkData();
     }
 
@@ -35,7 +32,6 @@ public abstract class ChainLinkExpandedFormActivity extends ChainLinkFormActivit
     protected void storeChainLinkData() {
         chainLink.setMessage(message.getText().toString());
         chainLink.setAddLocation(addLocation.isChecked());
-        chainLink.setAddPhoto(addPhoto.isChecked());
         super.storeChainLinkData();
     }
 }
