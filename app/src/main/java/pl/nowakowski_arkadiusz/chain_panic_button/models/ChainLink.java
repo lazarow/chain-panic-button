@@ -139,11 +139,11 @@ public class ChainLink implements Serializable {
             SMSService smsService = new SMSService(activity);
             String smsMessage = "";
             if (getAddLocation()) {
-                smsMessage = smsMessage + activity.getResources().getString(R.string.location) + ": "
-                        + (Math.round(activity.getLatitude() * 100.0) / 100.0) + ", " + (Math.round(activity.getLongitude() * 100.0) / 100.0) + ".";
+                smsMessage = activity.getResources().getString(R.string.location) + ": " + activity.getLatitude()
+                    + ", " + activity.getLongitude() + ". ";
             }
             smsMessage += message;
-            smsService.send(phone, message);
+            smsService.send(phone, smsMessage);
         } else if (getType().equals(ChainLinkType.EMAIL)) {
         } else if (getType().equals(ChainLinkType.CALL)) {
             Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
