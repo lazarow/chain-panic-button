@@ -48,7 +48,7 @@ public class CallChainLinkFormActivity extends ChainLinkFormActivity {
     }
 
     /**
-     * Picks a phone number from contacts
+     * Pobiera numer telefonu z kontaktów
      */
     public void pickPhoneNumber(View view) {
         Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
